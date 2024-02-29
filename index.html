@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I Love You</title>
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+    overflow: hidden;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+  }
+  
+  #heart {
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 750px; /* Adjust size as needed */
+    color: red;
+    opacity: 0.3;
+  }
+  
+  #content {
+    text-align: center;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  #message {
+    font-size: 24px;
+    margin-top: 20px;
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.5s ease-in-out; /* Fade-in and fade-out transition */
+  }
+
+  @keyframes heartbeat {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  #message {
+    animation: heartbeat 2s infinite;
+  }
+</style>
+</head>
+<body>
+<div id="heart">&hearts;</div>
+<div id="content">
+  <div id="message">My love for you grows stronger with every beat.</div>
+</div>
+
+<script>
+  // Define an array of love messages
+  const loveMessages = [
+    "My love for you grows stronger with every beat.",
+    "You make my heart skip a beat.",
+    "Your love fills my heart with joy.",
+    "You are the rhythm of my heart.",
+    "My heart belongs to you, now and forever."
+  ];
+
+  // Function to update the love message with fade-in and fade-out effect
+  function updateLoveMessage() {
+    const messageElement = document.getElementById('message');
+    const randomIndex = Math.floor(Math.random() * loveMessages.length);
+    messageElement.style.opacity = 0; // Fade out
+    setTimeout(() => {
+      messageElement.textContent = loveMessages[randomIndex];
+      messageElement.style.opacity = 1; // Fade in
+    }, 500); // Change message after fade out
+  }
+
+  // Update the love message every 5 seconds
+  setInterval(updateLoveMessage, 5000);
+</script>
+</body>
+</html>
